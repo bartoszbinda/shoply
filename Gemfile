@@ -5,9 +5,7 @@ gem 'devise'
 #Library for managing images, see: https://github.com/thoughtbot/paperclip
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'rails'
 #Use videojs to enable watching video
 gem 'videojs_rails'
 #another gem to enable watching video see: https://github.com/tobsch/mediaelement_rails
@@ -29,10 +27,13 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+gem   'pg','~> 0.20'
+group :production do
+  gem 'rails_12factor'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

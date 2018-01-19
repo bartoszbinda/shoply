@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   protected
      def configure_permitted_parameters
-      devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:nick ,:email, :encrypted_password, :password_confirmation, :password, :avatar) }
-      devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:nick,:email, :avatar, :current_password) }
+      devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:nick ,:email, :encrypted_password, :password_confirmation, :password, :avatar) }
+      devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:nick,:email, :avatar, :current_password) }
      end
 end
