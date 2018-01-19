@@ -11,6 +11,7 @@ I use:
 
 ###Done:
 * Write an AJAX for manageposts
+* Some tests fo ArticleController
 
 #To do:
 * Write an AJAX validation for registration/new.html.erb and registration/edit.html.erb
