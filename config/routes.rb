@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
+  resources :groups
   get 'manageusers/index'
   get '/updateAdminStatus', to: "manageusers#updateAdminStatus"
   get '/setIsBanned', to: "manageusers#setIsBanned"
-  devise_for :users
   resources :users
   resources :manageusers
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
