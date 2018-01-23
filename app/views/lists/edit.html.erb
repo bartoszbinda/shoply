@@ -1,0 +1,16 @@
+<h1>Editing List</h1>
+<%= form_for([@group, @group.lists.build]) do |f| %>
+  <p>
+    <%= f.label :title %> <br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
+<%= link_to 'Back', groups_path %>

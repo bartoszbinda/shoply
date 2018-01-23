@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :lists
   end
   get 'manageusers/index'
+  put '/groups/:group_id/lists/:group_id/edit/:list_id', to: "lists#edit"
   get '/updateAdminStatus', to: 'manageusers#updateAdminStatus'
   get '/setIsBanned', to: 'manageusers#setIsBanned'
   resources :users

@@ -8,6 +8,7 @@ gem 'devise'
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
+gem 'rails-pry'
 # Use videojs to enable watching video
 gem 'videojs_rails'
 # another gem to enable watching video see: https://github.com/tobsch/mediaelement_rails

@@ -1,7 +1,33 @@
 <div class="container-fluid">
 
 <p id="notice"><%= notice %></p>
+  <h2>Add a list!</h2>
+  <%= form_for([@group, @group.lists.build]) do |f| %>
+    <p>
+      <%= f.label :title %> <br>
+      <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.label :body %>
+      <%= f.text_area :body %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
 
+  <% end %>
+  <h2>Lists:</h2>
+  <% unless @group.lists.empty? %>
+  <% @group.lists.each do |elem| %>
+    <p><strong><%= elem.title %></strong></p>
+    <p><%= elem.body %></p>
+    <%= link_to 'Delete list', [elem.group, elem], method: :delete,
+                data: {confirm: "Are you sure?"} %>
+
+      <%= link_to 'Update list', edit_group_list_path(:group_id => @group.id, :list_id => elem.id), method: :put %>
+
+    <% end %>
+    <% end %>
 <p>
   <%= @group.name %>
   <%= link_to 'Edit', edit_group_path(@group) %> |

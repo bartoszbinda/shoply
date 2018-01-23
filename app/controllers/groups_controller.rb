@@ -19,6 +19,7 @@ class GroupsController < ApplicationController
   def show
     @user = current_user
     @users = (User.search(params[:search]) if params[:search])
+    @group = Group.find(params[:id])
   end
 
   def search
@@ -64,7 +65,7 @@ class GroupsController < ApplicationController
     @group.users << @user unless @group.users.include? @user
     end
     respond_to do |format|
-      if @group.update(group_params)
+      if @group.update(group_params_update)
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }
         format.json { render :show, status: :ok, location: @group }
       else
@@ -94,6 +95,9 @@ class GroupsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
 
   def group_params
-    params.require(:group).permit(:name, :search, :id)
+    params.require(:group).permit(:name, :search,:id)
+  end
+  def group_params_update
+    params.permit(:name, :search,:id)
   end
 end
