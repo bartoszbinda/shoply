@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :groups
+  resources :groups do
+    resources :shoppinglists
+  end
   get 'manageusers/index'
   get '/updateAdminStatus', to: "manageusers#updateAdminStatus"
   get '/setIsBanned', to: "manageusers#setIsBanned"
@@ -14,6 +16,8 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
+  get "/search", to: "groups#search"
+  get '/users', to: "users#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

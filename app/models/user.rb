@@ -12,4 +12,13 @@ class User < ActiveRecord::Base
   validates :nick, presence: true, uniqueness: true, length: { minimum: 3, maximum: 60 }
   validates :email, presence: true
   validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 1.megabytes
+
+  def self.search(search)
+    if search
+      where('nick ILIKE ?', "%#{search}%")
+    else
+      return nil
+    end
+  end
+
 end

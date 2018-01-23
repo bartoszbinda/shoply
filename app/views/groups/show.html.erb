@@ -1,9 +1,28 @@
+<div class="container-fluid">
+
 <p id="notice"><%= notice %></p>
 
 <p>
   <%= @group.id %>
   <%= @group.name %>
+  <%= link_to 'Edit', edit_group_path(@group) %> |
+  <%= link_to 'Back', groups_path %>
+  <%= link_to "Delete", @group, method: :delete, data: { confirm: 'Are you sure?' } %>
 </p>
+  <%= form_tag group_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+  <% end %>
+  <% if !@users.blank? %>
+    <% @users.each do |user| %>
+      <p><%= user.nick %></p>
+      <p><%= user.email %></p>
+      <p> <%= link_to "Add to group", group_path(:group_id => @group.id, :user_id => user.id), :method => :put %></p>
+    <% end %>
+    <% else %>
+  <h1>Find user!</h1>
+    <% end %>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+</div>

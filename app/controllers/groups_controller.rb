@@ -5,15 +5,28 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @user = current_user
-    @groups = @user.groups
+    if @user.isAdmin
+      @groups = Group.all
+    else
+      @groups = @user.groups
+    end
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
     @user = current_user
+    if params[:search]
+      @users = User.search(params[:search])
+    else
+      @users = nil
+    end
   end
 
+  def search
+    @users = User.search(params[:search])
+    redirect_to @group
+  end
   # GET /groups/new
   def new
     @group = Group.new
@@ -46,6 +59,9 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
+    @group = Group.find(params[:id])
+    @user = User.find(params[:user_id])
+    @group.users << @user unless @group.users.include? @user
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }
@@ -76,6 +92,6 @@ class GroupsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
 
   def group_params
-    params.require(:group).permit(:name)
+    params.permit(:name, :search,:id)
   end
 end
