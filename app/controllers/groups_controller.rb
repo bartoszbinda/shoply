@@ -1,32 +1,31 @@
+# frozen_string_literal: true
+
 class GroupsController < ApplicationController
-  before_action :authenticate_user!, :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :set_group, only: %i[show edit update destroy]
 
   # GET /groups
   # GET /groups.json
   def index
     @user = current_user
-    if @user.isAdmin
-      @groups = Group.all
-    else
-      @groups = @user.groups
-    end
+    @groups = if @user.isAdmin
+                Group.all
+              else
+                @user.groups
+              end
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
     @user = current_user
-    if params[:search]
-      @users = User.search(params[:search])
-    else
-      @users = nil
-    end
+    @users = (User.search(params[:search]) if params[:search])
   end
 
   def search
     @users = User.search(params[:search])
     redirect_to @group
   end
+
   # GET /groups/new
   def new
     @group = Group.new
@@ -60,8 +59,10 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1.json
   def update
     @group = Group.find(params[:id])
+    if(!params[:user_id].nil?)
     @user = User.find(params[:user_id])
     @group.users << @user unless @group.users.include? @user
+    end
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }
@@ -84,14 +85,15 @@ class GroupsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_group
-      @group = Group.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+  # Use callbacks to share common setup or constraints between actions.
+  def set_group
+    @group = Group.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
 
   def group_params
-    params.permit(:name, :search,:id)
+    params.require(:group).permit(:name, :search, :id)
   end
 end

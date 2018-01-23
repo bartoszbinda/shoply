@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
@@ -22,9 +24,8 @@ module Workspace
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+    config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif]
     config.assets.enabled = true
     config.assets.paths << "#{Rails.root}/app/assets/videos"
-
   end
 end

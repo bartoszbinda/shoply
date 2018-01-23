@@ -1,5 +1,5 @@
-class AddNameToGroup < ActiveRecord::Migration[5.0]
-  def change
+# frozen_string_literal: true
 
-  end
+class AddNameToGroup < ActiveRecord::Migration[5.0]
+  def change; end
 end

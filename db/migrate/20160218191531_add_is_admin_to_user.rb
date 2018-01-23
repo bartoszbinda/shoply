@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class AddIsAdminToUser < ActiveRecord::Migration
   def change
-    add_column :users, :isAdmin, :boolean, default:false
+    add_column :users, :isAdmin, :boolean, default: false
   end
 end

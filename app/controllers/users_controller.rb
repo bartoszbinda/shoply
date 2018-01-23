@@ -1,11 +1,11 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
- before_action :authenticate_user!
- def destroy
+  before_action :authenticate_user!
+  def destroy
     @user = User.find(params[:id])
     @user.destroy
 
-    if @user.destroy
-        redirect_to manageusers_path, notice: "User deleted."
-    end
-  end
+    redirect_to manageusers_path, notice: 'User deleted.' if @user.destroy
+   end
 end

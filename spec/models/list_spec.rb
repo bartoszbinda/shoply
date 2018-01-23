@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
-RSpec.describe ShoppingList, type: :model do
+RSpec.describe List, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end

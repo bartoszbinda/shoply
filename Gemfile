@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-#Registration of the new users
+# Registration of the new users
 gem 'devise'
-#Library for managing images, see: https://github.com/thoughtbot/paperclip
-gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+# Library for managing images, see: https://github.com/thoughtbot/paperclip
+gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
-#Use videojs to enable watching video
+# Use videojs to enable watching video
 gem 'videojs_rails'
-#another gem to enable watching video see: https://github.com/tobsch/mediaelement_rails
-gem "mediaelement_rails"
+# another gem to enable watching video see: https://github.com/tobsch/mediaelement_rails
+gem 'mediaelement_rails'
 gem 'rdoc'
 
 # Use SCSS for stylesheets
@@ -29,8 +31,8 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 # bundle exec rake doc:rails generates the API under doc/api.
+gem 'pg', '~> 0.20'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem   'pg','~> 0.20'
 group :production do
   gem 'rails_12factor'
 end
@@ -41,13 +43,12 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
- gem 'capistrano-rails', group: :development
+gem 'capistrano-rails', group: :development
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'rspec-rails', '~> 3.7'
   gem 'factory_bot'
-
+  gem 'rspec-rails', '~> 3.7'
 end
 
 group :development do
@@ -57,4 +58,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

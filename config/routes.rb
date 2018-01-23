@@ -1,23 +1,25 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users
   resources :groups do
-    resources :shoppinglists
+    resources :lists
   end
   get 'manageusers/index'
-  get '/updateAdminStatus', to: "manageusers#updateAdminStatus"
-  get '/setIsBanned', to: "manageusers#setIsBanned"
+  get '/updateAdminStatus', to: 'manageusers#updateAdminStatus'
+  get '/setIsBanned', to: 'manageusers#setIsBanned'
   resources :users
   resources :manageusers
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   get 'welcome/index'
-  get 'manageusers', to: "manageusers#index"
+  get 'manageusers', to: 'manageusers#index'
   root 'welcome#index'
   resources :manageposts
   resources :articles do
     resources :comments
   end
-  get "/search", to: "groups#search"
-  get '/users', to: "users#index"
+  get '/search', to: 'groups#search'
+  get '/users', to: 'users#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddAttachmentVideoToArticles < ActiveRecord::Migration
   def self.up
     change_table :articles do |t|
