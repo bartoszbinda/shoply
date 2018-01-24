@@ -2,46 +2,55 @@
 
 <p id="notice"><%= notice %></p>
   <h2>Add a list!</h2>
+
+  <div class="text-center">
   <%= form_for([@group, @group.lists.build]) do |f| %>
     <p>
       <%= f.label :title %> <br>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, size: "70x200" %>
     </p>
     <p>
-      <%= f.label :body %>
-      <%= f.text_area :body %>
+      <%= f.label :body %><br>
+      <%= f.text_area :body,  size: "70x20" %>
     </p>
     <p>
-      <%= f.submit %>
+      <%= f.submit :class => "btn btn-success"%>
     </p>
 
   <% end %>
+  </div>
   <h2>Lists:</h2>
   <% unless @group.lists.empty? %>
     <% @listsOrder = @group.lists.order(created_at: :desc) %>
   <% @listsOrder.each do |elem| %>
-    <p><strong><%= elem.title %></strong></p>
-    <p><%= elem.body %></p>
+    <div class="form-group" >
+      <label for="title"><%= elem.title%></label>
+      <textarea disabled class="form-control" rows="5" cols="20"><%= elem.body %></textarea>
       </p>
-    <%= link_to 'Delete list', [elem.group, elem], method: :delete,
-                data: {confirm: "Are you sure?"} %>
+    </div>
 
-      <%= link_to 'Update list', edit_group_list_path(@group,elem)%>
+      <button class="btn btn-danger"> <%= link_to 'Delete list', [elem.group, elem], method: :delete,
+                data: {confirm: "Are you sure?"} %></button>
 
-    <% end %>
+    <button class="btn btn-info"> <%= link_to 'Update list', edit_group_list_path(@group,elem)%></button>
+
+<% end %>
     <% end %>
 <p>
   <%= @group.name %>
-  <%= link_to 'Edit', edit_group_path(@group) %> |
-  <%= link_to 'Back', groups_path %>
-  <%= link_to "Download CSV", group_path(@group, format: :csv) %>
-  <%= link_to "Download PDF", group_path(@group, format: :pdf) %>
-  <%= link_to "Delete", @group, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <br>
+  <br>
+      <button class="btn btn-info">   <%= link_to "Download CSV", group_path(@group, format: :csv) %></button>
+        <button class="btn btn-info">   <%= link_to "Download PDF", group_path(@group, format: :pdf) %></button>
+  <% if @group.created_by == @user.nick  || @user.isAdmin %>
+
+<button class="btn btn-danger"> <%= link_to "Delete group", @group, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+    <% end %>
 </p>
   <%= form_tag group_path, :method => 'get' do %>
     <p>
       <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", :name => nil %>
+      <%= submit_tag "Search for a user", :class => "btn btn-success", :name => nil %>
     </p>
   <% end %>
   <% if !@users.blank? %>
@@ -51,7 +60,6 @@
       <p> <%= link_to "Add to group", group_path(:group_id => @group.id, :user_id => user.id), :method => :put %></p>
     <% end %>
     <% else %>
-  <h1>Find user!</h1>
     <% end %>
 
 </div>

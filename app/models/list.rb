@@ -1,6 +1,8 @@
 class List < ApplicationRecord
   belongs_to :group
   validates_presence_of :group_id
+  validates :title, length: {minimum: 5, maximum:100}
+  validates :body, length: {minimum: 10, maximum:3000}
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << column_names

@@ -1,16 +1,9 @@
-<h1>Hi there!</h1>
-<h1>Here are some newest posts!</h1>
-<div class="container-fluid">
-  <article class="post-box">
-    
-    <% @articles.each do |article| %>
-    <% break if @counter == 3 %>
-      <h1 class="center"><%= link_to article.title, article_path(article) %></h1>
-      <p><%= article.text %></p>
-      <br>
-    <% @counter += 1 %>
-    
-    <% end %>
-    
-  </article>
+<div class="jumbotron center">
+  <h1 class="display-4">Hello!</h1>
+  <p class="lead center">To use application functionality please sign up. Already signed up? Sign in!</p>
+  <hr class="my-4">
+  <p>Application allows to menage personal shoppings' lists..</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  </p>
 </div>
