@@ -23,6 +23,10 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { send_data @group.lists.to_csv}
+      format.pdf do
+        pdf = ReportPdf.new(@group)
+        send_data pdf.render, filename: 'report.pdf', type: 'application/pdf'
+      end
     end
   end
 

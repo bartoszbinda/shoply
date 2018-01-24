@@ -2,12 +2,15 @@
 
 source 'https://rubygems.org'
 
+gem 'prawn'
 # Registration of the new users
 gem 'devise'
 # Library for managing images, see: https://github.com/thoughtbot/paperclip
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
+gem 'pry'
+gem 'prawn-table'
 gem 'rails-pry'
 # Use videojs to enable watching video
 gem 'videojs_rails'
