@@ -37,7 +37,16 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
+  # SMTP settings for gmail
+  ActionMailer::Base.delivery_method = :sendmail
+  ActionMailer::Base.sendmail_settings = {
+      :address => "smtp.gmail.com",
+      :port => "587",
+      :domain => "gmail.com",
+      :user_name => "shoplyBinda@gmail.com",
+      :password => "shoply1234",
+      :authentication => "plain",
+      :enable_starttls_auto => true
+  }
 
-  # Raises error for missing translations
-  # config.action_view.raise_on_missing_translations = true
 end

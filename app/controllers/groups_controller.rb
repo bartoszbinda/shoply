@@ -47,6 +47,9 @@ class GroupsController < ApplicationController
     @group.users << @user
     respond_to do |format|
       if @group.save && @user.save
+        @group.users.each do |user|
+          ListMailer.list_email(user).deliver_now
+        end
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
       else
@@ -66,6 +69,9 @@ class GroupsController < ApplicationController
     end
     respond_to do |format|
       if @group.update(group_params_update)
+        @group.users.each do |user|
+          ListMailer.list_email(user).deliver_now
+        end
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }
         format.json { render :show, status: :ok, location: @group }
       else
@@ -80,6 +86,9 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
     respond_to do |format|
+      @group.users.each do |user|
+        ListMailer.list_email(user).deliver_now
+      end
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
       format.json { head :no_content }
     end

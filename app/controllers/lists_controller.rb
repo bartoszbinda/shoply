@@ -6,21 +6,27 @@ class ListsController < ApplicationController
     @group = Group.find(params[:group_id])
     @user = current_user
     @list = @group.lists.create(list_params)
+    @group.users.each do |user|
+      ListMailer.list_email(user).deliver_now
+    end
     redirect_to group_path(@group)
   end
   def edit
     @user = current_user
     @group = Group.find(params[:group_id])
-    @list = @group.lists.find(params[:list_id])
+    @list = @group.lists.find(params[:id])
   end
 
   def update
     @user = current_user
     @group = Group.find(params[:group_id])
     @user = current_user
-    @list = @group.lists.find(params[:list_id])
+    @list = @group.lists.find(params[:id])
     if @list.update(list_params_update)
-      redirect_to @group
+      @group.users.each do |user|
+        ListMailer.list_email(user).deliver_now
+      end
+      redirect_to groups_path
     else
       render 'edit'
     end
@@ -50,6 +56,6 @@ class ListsController < ApplicationController
     params.require(:list).permit(:title,:body,:group_id, :list )
   end
   def list_params_update
-    params.permit(:title,:body,:group_id,:list)
+    params.permit(:title,:body,:list)
   end
 end

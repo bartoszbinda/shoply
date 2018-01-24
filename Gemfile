@@ -14,7 +14,7 @@ gem 'videojs_rails'
 # another gem to enable watching video see: https://github.com/tobsch/mediaelement_rails
 gem 'mediaelement_rails'
 gem 'rdoc'
-
+gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
