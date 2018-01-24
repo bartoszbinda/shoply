@@ -22,6 +22,7 @@
   <% @listsOrder.each do |elem| %>
     <p><strong><%= elem.title %></strong></p>
     <p><%= elem.body %></p>
+      </p>
     <%= link_to 'Delete list', [elem.group, elem], method: :delete,
                 data: {confirm: "Are you sure?"} %>
 
@@ -33,6 +34,7 @@
   <%= @group.name %>
   <%= link_to 'Edit', edit_group_path(@group) %> |
   <%= link_to 'Back', groups_path %>
+  <%= link_to "Download CSV", group_path(@group, format: :csv) %>
   <%= link_to "Delete", @group, method: :delete, data: { confirm: 'Are you sure?' } %>
 </p>
   <%= form_tag group_path, :method => 'get' do %>

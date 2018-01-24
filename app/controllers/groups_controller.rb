@@ -20,6 +20,10 @@ class GroupsController < ApplicationController
     @user = current_user
     @users = (User.search(params[:search]) if params[:search])
     @group = Group.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.csv { send_data @group.lists.to_csv}
+    end
   end
 
   def search
