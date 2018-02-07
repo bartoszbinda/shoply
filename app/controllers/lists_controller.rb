@@ -31,6 +31,14 @@ class ListsController < ApplicationController
       render 'edit'
     end
   end
+  def toogle_status
+    @user = current_user
+    @group = Group.find(params[:group_id])
+    @list = List.find(params[:id])
+    @list.status = false
+    @list.save
+    redirect_to @group
+  end
   # DELETE /lists/1
   # DELETE /lists/1.json
   def destroy
@@ -41,6 +49,7 @@ class ListsController < ApplicationController
       flash[:error] = "This item was already bought!"
     else
       @list.status = true
+      @list.save
     end
     redirect_to @group
 

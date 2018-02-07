@@ -45,8 +45,8 @@
         <% end %>
     </div>
 
-      <button class="btn btn-danger"> <%= link_to 'Bought', [elem.group, elem], method: :delete%></button>
-
+      <button class="btn btn-danger"> <%= link_to 'Bought?', [elem.group, elem], method: :delete%></button>
+      <button class="btn btn-info"><%= link_to "Didn't bought?", toogle_status_group_list_path(elem.group, elem), method: :put %></button>
     <button class="btn btn-info"> <%= link_to 'Update list', edit_group_list_path(@group,elem)%></button>
 
 <% end %>

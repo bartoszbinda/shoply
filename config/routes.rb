@@ -3,7 +3,12 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :groups do
-    resources :lists
+    resources :lists do
+      member do
+        put :toogle_status
+        get :deliver_now
+      end
+    end
   end
   get 'manageusers/index'
   put '/groups/:group_id/lists/:group_id/edit/:list_id', to: "lists#edit"
