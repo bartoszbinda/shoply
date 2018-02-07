@@ -7,25 +7,7 @@
       <%= value %>
     </div>
   <% end %>
-  <h2>Add a product!</h2>
-
-  <div class="text-center">
-  <%= form_for([@group, @group.lists.build]) do |f| %>
-    <p>
-      <%= f.label :name %> <br>
-      <%= f.text_field :name, size: "70x20" %>
-    </p>
-    <p>
-      <%= f.label :amount %><br>
-      <%= f.number_field :amount%>
-    </p>
-    <p>
-      <%= f.submit :class => "btn btn-success"%>
-    </p>
-
-  <% end %>
-  </div>
-  <h2>Lists:</h2>
+  <h2 class="text-left  ">Products:</h2>
   <% unless @group.lists.empty? %>
     <% @listsOrder = @group.lists.order(created_at: :desc) %>
   <% @listsOrder.each do |elem| %>
@@ -56,12 +38,33 @@
   <br>
   <br>
       <button class="btn btn-info">   <%= link_to "Download CSV", group_path(@group, format: :csv) %></button>
-        <button class="btn btn-info">   <%= link_to "Download PDF", group_path(@group, format: :pdf) %></button>
+      <button class="btn btn-info">   <%= link_to "Download PDF", group_path(@group, format: :pdf) %></button>
+      <button class="btn btn-info">   <%= link_to "Deliver email", deliver_now_group_path(@group) %></button>
+
   <% if @group.created_by == @user.nick  || @user.isAdmin %>
 
 <button class="btn btn-danger"> <%= link_to "Delete group", @group, method: :delete, data: { confirm: 'Are you sure?' } %></button>
     <% end %>
 </p>
+  <h2 class="text-left">Add a product!</h2>
+  <div class="left">
+    <%= form_for([@group, @group.lists.build]) do |f| %>
+      <p>
+        <%= f.label :name %> <br>
+        <%= f.text_field :name, size: "35x2" %>
+      </p>
+      <p>
+        <%= f.label :amount %><br>
+        <%= f.number_field :amount%>
+      </p>
+      <p>
+        <%= f.submit "Add product", :class => "btn btn-success"%>
+      </p>
+
+    <% end %>
+  </div>
+  <br>
+  <h2 class="text-left">Assign a user to a group.</h2>
   <%= form_tag group_path, :method => 'get' do %>
     <p>
       <%= text_field_tag :search, params[:search] %>

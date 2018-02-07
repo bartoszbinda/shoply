@@ -4,7 +4,11 @@ class ListMailer < ApplicationMailer
   def list_email(user)
     @user = user
     mail(to: @user.email, subject: "List modification")
-    end
+  end
+  def list_email_with_given_group(user,group)
+    @user = user
+    mail(to: @user.email, subject: "List modification in group #{group}")
+  end
 private
     def bzdury
       mg_client = Mailgun::Client.new ENV['api_key']

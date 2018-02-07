@@ -30,6 +30,15 @@ class GroupsController < ApplicationController
     end
   end
 
+  def deliver_now
+    @user = current_user
+    @group = Group.find(params[:id])
+    @group.users.each do |user|
+      ListMailer.list_email_with_given_group(user, @group).deliver_now
+    end
+    redirect_to group_path(@group)
+  end
+
   def search
     @users = User.search(params[:search])
     redirect_to @group

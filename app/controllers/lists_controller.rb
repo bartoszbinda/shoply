@@ -35,8 +35,12 @@ class ListsController < ApplicationController
     @user = current_user
     @group = Group.find(params[:group_id])
     @list = List.find(params[:id])
-    @list.status = false
-    @list.save
+    if @list.status == false
+      flash[:error] = "This item is already not bought!"
+    else
+      @list.status = false
+      @list.save
+    end
     redirect_to @group
   end
   # DELETE /lists/1

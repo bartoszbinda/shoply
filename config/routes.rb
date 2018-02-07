@@ -3,10 +3,12 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :groups do
+    member do
+      get :deliver_now
+    end
     resources :lists do
       member do
         put :toogle_status
-        get :deliver_now
       end
     end
   end
