@@ -30,9 +30,19 @@
     <% @listsOrder = @group.lists.order(created_at: :desc) %>
   <% @listsOrder.each do |elem| %>
     <div class="form-group" >
-      <label for="title"><%= elem.name%></label>
-      <textarea disabled class="form-control" rows="5" cols="20"><%= elem.amount %></textarea>
-      </p>
+      <% if elem.status == true %>
+        <del>
+          <p>
+        <%= elem.name%>
+        <%= elem.amount%>
+          </p>
+        </del>
+        <% else %>
+        <p>
+          <label for="title"><%= elem.name%></label>
+          <label for="amount"><%= elem.amount%></label>
+        </p>
+        <% end %>
     </div>
 
       <button class="btn btn-danger"> <%= link_to 'Bought', [elem.group, elem], method: :delete%></button>
