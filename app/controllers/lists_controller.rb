@@ -37,11 +37,12 @@ class ListsController < ApplicationController
     @user = current_user
     @group = Group.find(params[:group_id])
     @list = @group.lists.find(params[:id])
-    if @list.destroy
-      redirect_to groups_path
+    if @list.status == true
+      flash[:error] = "This item was already bought!"
     else
-      render 'edit'
+      @list.status = true
     end
+    redirect_to @group
 
     end
   def show
@@ -53,9 +54,9 @@ class ListsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     # Never trust parameters from the scary internet, only allow the white list through.
   def list_params
-    params.require(:list).permit(:title,:body,:group_id, :list )
+    params.require(:list).permit(:name,:amount,:body,:status,:group_id, :list )
   end
   def list_params_update
-    params.permit(:title,:body,:list)
+    params.permit(:body,:list, :name, :amount, :body, :status)
   end
 end

@@ -1,17 +1,23 @@
 <div class="container-fluid">
 
+
 <p id="notice"><%= notice %></p>
-  <h2>Add a list!</h2>
+  <% flash.each do |key, value| %>
+    <div class="<%= flash_class(key) %>">
+      <%= value %>
+    </div>
+  <% end %>
+  <h2>Add a product!</h2>
 
   <div class="text-center">
   <%= form_for([@group, @group.lists.build]) do |f| %>
     <p>
-      <%= f.label :title %> <br>
-      <%= f.text_field :title, size: "70x200" %>
+      <%= f.label :name %> <br>
+      <%= f.text_field :name, size: "70x20" %>
     </p>
     <p>
-      <%= f.label :body %><br>
-      <%= f.text_area :body,  size: "70x20" %>
+      <%= f.label :amount %><br>
+      <%= f.number_field :amount%>
     </p>
     <p>
       <%= f.submit :class => "btn btn-success"%>
@@ -24,13 +30,12 @@
     <% @listsOrder = @group.lists.order(created_at: :desc) %>
   <% @listsOrder.each do |elem| %>
     <div class="form-group" >
-      <label for="title"><%= elem.title%></label>
-      <textarea disabled class="form-control" rows="5" cols="20"><%= elem.body %></textarea>
+      <label for="title"><%= elem.name%></label>
+      <textarea disabled class="form-control" rows="5" cols="20"><%= elem.amount %></textarea>
       </p>
     </div>
 
-      <button class="btn btn-danger"> <%= link_to 'Delete list', [elem.group, elem], method: :delete,
-                data: {confirm: "Are you sure?"} %></button>
+      <button class="btn btn-danger"> <%= link_to 'Bought', [elem.group, elem], method: :delete%></button>
 
     <button class="btn btn-info"> <%= link_to 'Update list', edit_group_list_path(@group,elem)%></button>
 
