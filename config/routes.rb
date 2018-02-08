@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :groups do
     member do
       get :deliver_now
+      put :delete_user
     end
     resources :lists do
       member do

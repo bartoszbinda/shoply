@@ -26,5 +26,5 @@ class ListTest < ActiveSupport::TestCase
     list.name = 'a' * 101
     assert_not list.valid?
   end
-  
+
 end

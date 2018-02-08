@@ -18,8 +18,14 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @user = current_user
-    @users = (User.search(params[:search]) if params[:search])
     @group = Group.find(params[:id])
+    @users = (User.search(params[:search]) if params[:search])
+    @userList = []
+    User.all.each do |user|
+      if @group.users.include? user
+        @userList << user
+      end
+    end
     respond_to do |format|
       format.html
       format.csv { send_data @group.lists.to_csv}
@@ -96,6 +102,14 @@ class GroupsController < ApplicationController
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
+  end
+  def delete_user
+    @user = current_user
+    @group = Group.find(params[:id])
+    @userToDelete = User.find(params[:user_id])
+    @userToDelete.groups.delete(@group)
+    @group.users.delete(@userToDelete)
+    redirect_to group_path(@group)
   end
 
   # DELETE /groups/1
