@@ -37,6 +37,7 @@ gem 'jbuilder'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'pg', '~> 0.20'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'rails-controller-testing'
 group :production do
   gem 'rails_12factor'
 end

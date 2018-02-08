@@ -10,7 +10,11 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrail  s.org/configuring.html#database-pooling
   pool: 5
-
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: shoply_test
+  pool: 5
 development:
   <<: *default
   database: shoply_development
