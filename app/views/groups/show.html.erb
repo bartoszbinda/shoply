@@ -34,8 +34,9 @@
 
 <% end %>
     <% end %>
+  <br>
+  <br>
 <p>
-  <%= @group.name %>
   <br>
   <br>
       <button class="btn btn-info">   <%= link_to "Download CSV", group_path(@group, format: :csv) %></button>
@@ -85,7 +86,15 @@
 <br>
 <br>
 <br>
-<div class="container-fluid">
+
+<button class="btn-primary btn" id="toExpend" style="visibility: visible">Click to expend</button>
+<br>
+<button class="btn-primary btn" id="toHide2" style="visibility: hidden">Click to hide</button>
+
+<br>
+<br>
+<br>
+<div class="container-fluid" id="toHide" style="visibility: hidden">
 <% @userList.each do |user| %>
   <p><%= user.nick%></p>
     <p><%= user.email%></p>
@@ -96,3 +105,19 @@
     </p>
   <% end %>
 </div>
+<script>
+$("#toExpend").click(function()
+    {
+        $("#toHide").css("visibility", "visible")
+        $("#toExpend").css("visibility", "hidden")
+        $("#toHide2").css("visibility", "visible")
+    }
+)
+$("#toHide2").click(function()
+    {
+        $("#toHide").css("visibility", "hidden")
+        $("#toExpend").css("visibility", "visible")
+        $("#toHide2").css("visibility", "hidden")
+    }
+)
+</script>
