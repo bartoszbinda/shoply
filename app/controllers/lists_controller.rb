@@ -1,5 +1,4 @@
 class ListsController < ApplicationController
-
   # POST /lists
   # POST /lists.json
   def create
@@ -7,7 +6,7 @@ class ListsController < ApplicationController
     @user = current_user
     @list = @group.lists.create(list_params)
     @group.users.each do |user|
-      ListMailer.list_email(user).deliver_now
+      #ListMailer.list_email(user).deliver_now
     end
     redirect_to group_path(@group)
   end
