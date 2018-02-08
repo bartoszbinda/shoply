@@ -7,7 +7,7 @@ class ListMailer < ApplicationMailer
   end
   def list_email_with_given_group(user,group)
     @user = user
-    mail(to: @user.email, subject: "List modification in group #{group}")
+    mail(to: @user.email, subject: "List modification in group #{group.name}")
   end
 private
     def bzdury

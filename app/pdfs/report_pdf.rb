@@ -25,7 +25,7 @@ class ReportPdf < Prawn::Document
     end
   end
   def group_rows
-    [['#','Title','Body']] +
+    [['#','Name','Amount']] +
         @group.lists.map do |list|
           [@group.name, list.name, list.amount]
         end

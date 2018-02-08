@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ccecb243-e776-45a0-92b7-f467f9324d0d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/lists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/lists_controller.rb" />
+      <change beforePath="$PROJECT_DIR$/app/mailers/list_mailer.rb" afterPath="$PROJECT_DIR$/app/mailers/list_mailer.rb" />
       <change beforePath="$PROJECT_DIR$/app/pdfs/report_pdf.rb" afterPath="$PROJECT_DIR$/app/pdfs/report_pdf.rb" />
-      <change beforePath="$PROJECT_DIR$/app/views/groups/show.html.erb" afterPath="$PROJECT_DIR$/app/views/groups/show.html.erb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -62,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="report_pdf.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="report_pdf.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/pdfs/report_pdf.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="46" lean-forward="false" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
+            <state relative-caret-position="405">
+              <caret line="27" column="24" lean-forward="false" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -92,21 +90,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="list_email.html.erb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/list_mailer/list_email.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list_mailer.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="list_mailer.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/mailers/list_mailer.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="33" />
+            <state relative-caret-position="135">
+              <caret line="9" column="75" lean-forward="false" selection-start-line="9" selection-start-column="75" selection-end-line="9" selection-end-column="75" />
               <folding />
             </state>
           </provider>
@@ -228,13 +216,13 @@
         <option value="$PROJECT_DIR$/app/views/lists/show.html.erb" />
         <option value="$PROJECT_DIR$/app/helpers/application_helper.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/mailers/list_mailer.rb" />
         <option value="$PROJECT_DIR$/app/views/list_mailer/list_email_with_given_group.html.erb.html" />
         <option value="$PROJECT_DIR$/app/views/list_mailer/list_email_with_given_group.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/groups_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/groups/show.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/lists_controller.rb" />
         <option value="$PROJECT_DIR$/app/pdfs/report_pdf.rb" />
+        <option value="$PROJECT_DIR$/app/mailers/list_mailer.rb" />
       </list>
     </option>
   </component>
@@ -370,6 +358,11 @@
               <item name="Shoply" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
               <item name="initializers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shoply" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shoply" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shoply" type="b2602c69:ProjectViewProjectNode" />
@@ -547,12 +540,12 @@
       <workItem from="1516399632717" duration="19005000" />
       <workItem from="1516786185695" duration="8531000" />
       <workItem from="1518006252520" duration="6250000" />
-      <workItem from="1518053241117" duration="144000" />
+      <workItem from="1518053241117" duration="659000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60031000" />
+    <option name="totallyTimeSpent" value="60546000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2" y="23" width="1440" height="797" extended-state="6" />
@@ -603,14 +596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
           <caret line="162" column="10" lean-forward="false" selection-start-line="162" selection-start-column="10" selection-end-line="162" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/schema.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="51" column="20" lean-forward="false" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -889,14 +874,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/mailers/list_mailer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/list_mailer/list_email_with_given_group.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -954,8 +931,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/pdfs/report_pdf.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="46" lean-forward="false" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
+        <state relative-caret-position="405">
+          <caret line="27" column="24" lean-forward="false" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/schema.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="51" column="20" lean-forward="false" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/mailers/list_mailer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="75" lean-forward="false" selection-start-line="9" selection-start-column="75" selection-end-line="9" selection-end-column="75" />
           <folding />
         </state>
       </provider>
